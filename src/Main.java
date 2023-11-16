@@ -1,17 +1,37 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        System.out.println("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of positive integers: ");
+        int n = scanner.nextInt();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        int[] integers = new int[n];
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        System.out.println("Enter " + n + " positive integers , one per line: ");
+        for (int i = 0; i < n; i++) {
+            integers[i] = scanner.nextInt();
+            if(integers[i] < 0){
+                System.out.println("Error!! , Please enter positive integers");
+                return;
+            }
         }
+        int l = integers.length;
+        for (int i = 0; i < l - 1; i++) {
+            for (int j = 0; j < l - i - 1; j++) {
+                if (integers[j] > integers[j + 1]) {
+                    int temp = integers[j];
+                    integers[j] = integers[j + 1];
+                    integers[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("Sorted integers in ascending order: ");
+        for (int i = 0; i < n; i++) {
+            System.out.println(integers[i]);
+        }
+
     }
 }
