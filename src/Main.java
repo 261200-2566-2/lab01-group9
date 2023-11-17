@@ -26,11 +26,6 @@ public class Main {
         for(int i = 0 ;i< arr.length;i++){
             System.out.print("Enter number "+(i+1) +": ");
             int number = sc.nextInt();
-            if(number < 0){
-                i--;
-                System.out.println("Error!!! Please enter NonNegative number");
-                continue;
-            }
             arr[i] = number;
         }
         SortAscendingArr(arr);
@@ -41,6 +36,10 @@ public class Main {
         Scanner n = new Scanner(System.in);
         System.out.print("Enter N: ");
         int capacity = n.nextInt();
+        if(capacity < 0){
+            System.out.println("Error!!! Please enter NonNegative integer");
+            return;
+        }
         PushNum(capacity);
     }
 }
